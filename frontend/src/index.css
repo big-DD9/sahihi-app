@@ -1,0 +1,451 @@
+/* ============================================
+   SAHIHI DESIGN SYSTEM
+   Ledger/passbook aesthetic. Ink Navy + Ledger
+   Teal as portal accents, Brass Seal for the
+   signature stamp motif, Parchment background.
+   ============================================ */
+
+:root {
+  /* Color tokens */
+  --ink-navy: #12283f;
+  --ink-navy-light: #1c3a5a;
+  --ledger-teal: #1f6f6b;
+  --ledger-teal-light: #2a8d88;
+  --parchment: #f6f4ef;
+  --parchment-dark: #ece8de;
+  --brass: #b08d57;
+  --brass-light: #c9a876;
+  --sage: #5c8a6e;
+  --sage-light: #e7f0ea;
+  --brick: #a8432e;
+  --brick-light: #f5e6e2;
+  --ink-text: #1a1a1a;
+  --ink-muted: #6b6b6b;
+  --border-hairline: #d8d3c6;
+
+  /* Type */
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible keyboard focus everywhere - important for a financial app */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--ledger-teal);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  width: 100%;
+}
+
+.centered-auth {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar {
+  background: var(--ink-navy);
+  color: var(--parchment);
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar.admin-portal {
+  background: #0a1826;
+  border-bottom: 2px solid var(--brass);
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--parchment);
+  text-decoration: none;
+}
+
+.navbar-brand .portal-tag {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--brass-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: var(--space-xs);
+  vertical-align: middle;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.9rem;
+}
+
+.navbar-user button {
+  background: transparent;
+  border: 1px solid rgba(246, 244, 239, 0.3);
+  color: var(--parchment);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  transition: background 0.15s ease;
+}
+
+.navbar-user button:hover {
+  background: rgba(246, 244, 239, 0.1);
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.card + .card {
+  margin-top: var(--space-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.card-header h2 {
+  font-size: 1.1rem;
+}
+
+/* ============================================
+   BALANCE HERO
+   ============================================ */
+
+.balance-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.balance-hero .account-number {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.balance-hero .balance-amount {
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  line-height: 1;
+  margin-top: 0.3rem;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--ledger-teal);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--ledger-teal-light);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink-navy);
+  border: 1.5px solid var(--ink-navy);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(18, 40, 63, 0.05);
+}
+
+.btn-danger {
+  background: var(--brick);
+  color: #fff;
+}
+
+.btn-danger:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-group {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+.field {
+  margin-bottom: var(--space-sm);
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin-bottom: 0.4rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1.5px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--ink-text);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--ledger-teal);
+}
+
+.field-error {
+  color: var(--brick);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.form-error-banner {
+  background: var(--brick-light);
+  color: var(--brick);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  margin-bottom: var(--space-sm);
+}
+
+/* ============================================
+   LEDGER TABLE (transaction history)
+   ============================================ */
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.ledger-table th {
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1.5px solid var(--border-hairline);
+}
+
+.ledger-table td {
+  padding: 0.65rem 0.6rem;
+  border-bottom: 1px solid var(--border-hairline);
+  font-family: var(--font-mono);
+}
+
+.ledger-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ledger-table .entry-no {
+  color: var(--ink-muted);
+}
+
+.amount-positive {
+  color: var(--sage);
+}
+
+.amount-negative {
+  color: var(--brick);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-lg) var(--space-sm);
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   STAMP BADGE - the signature element
+   ============================================ */
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.7rem 0.3rem 0.4rem;
+  border-radius: 999px;
+  border: 1.5px solid currentColor;
+  transform: rotate(-2deg);
+}
+
+.stamp::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.stamp-approved,
+.stamp-repaid {
+  color: var(--sage);
+  background: var(--sage-light);
+}
+
+.stamp-pending {
+  color: var(--brass);
+  background: #f7f0e4;
+}
+
+.stamp-rejected {
+  color: var(--brick);
+  background: var(--brick-light);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  .balance-hero .balance-amount {
+    font-size: 2.1rem;
+  }
+
+  .ledger-table {
+    font-size: 0.8rem;
+  }
+
+  .ledger-table th:nth-child(1),
+  .ledger-table td:nth-child(1) {
+    display: none; /* hide entry-no column on very small screens */
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
