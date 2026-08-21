@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-// Every component imports THIS instance, never raw axios - that's what
-// guarantees the JWT gets attached consistently on every single request.
+// In dev, this resolves to '/api' and Vite proxies it to localhost:8080.
+// In production (Vercel), VITE_API_BASE_URL is set to the real Render
+// backend URL, since there's no dev proxy once this is a static build.
 const apiClient = axios.create({
-  baseURL: '/api', // Vite proxies this to http://localhost:8080 in dev
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
   headers: {
     'Content-Type': 'application/json',
   },
