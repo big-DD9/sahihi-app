@@ -10,8 +10,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  BACKEND_IMAGE: ${{ github.repository }}/sahihi-backend
-  FRONTEND_IMAGE: ${{ github.repository }}/sahihi-frontend
+  BACKEND_IMAGE: big-dd9/sahihi-backend
+  FRONTEND_IMAGE: big-dd9/sahihi-frontend
 
 jobs:
   # ============================================
